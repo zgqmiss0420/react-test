@@ -35,7 +35,7 @@ export default class Login extends Component {
   render() {
     return (
       <div>
-        <NavBar>硅谷直聘</NavBar>
+        <NavBar>用户登录</NavBar>
         <Logo/>
         <WingBlank>
           <List>
@@ -54,7 +54,7 @@ export default class Login extends Component {
               密&nbsp;&nbsp;&nbsp;码:
             </InputItem>
             <WhiteSpace/>
-            <Button type='primary' onClick={this.login}>登&nbsp;&nbsp;&nbsp;陆</Button>
+            <Button type='primary' onClick={this.login}>登&nbsp;&nbsp;&nbsp;录</Button>
             <WhiteSpace/>
             <Button onClick={this.toRegister}>还没有账号</Button>
           </List>

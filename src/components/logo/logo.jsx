@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
-import logo from './logo.png'
+import logo from './imgs/logo.png'
+import './logo.less'
 
 class Logo extends Component {
   render () {

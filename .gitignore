@@ -1,9 +1,9 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 /.idea
-/package-lock.json
+
 # dependencies
 /node_modules
-
+/package-lock.json
 # testing
 /coverage
 
