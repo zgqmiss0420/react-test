@@ -7,6 +7,7 @@ import Login from './containers/login/login'
 import Register from './containers/register/register'
 import Main from './containers/main/main'
 import store from './redux/store'
+import './assets/css/index.less'
 
 ReactDOM.render(
   <Provider store={store}>
@@ -14,6 +15,7 @@ ReactDOM.render(
       <Switch>
         <Route path='/login' component={Login}/>
         <Route path='/register' component={Register}/>
+        
         <Route component={Main}/>
       </Switch>
     </HashRouter>

@@ -8,10 +8,13 @@ import {
   WhiteSpace,
   Button
 } from 'antd-mobile'
+import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom'
 
 import Logo from '../../components/logo/logo'
+import {login} from '../../redux/actions'
 
-export default class Login extends Component {
+class Login extends Component {
   state = {
     username: '',
     password: '',
@@ -27,18 +30,22 @@ export default class Login extends Component {
     this.props.history.replace('/register')
   }
   
-  // 注册
-  login = () => {
-    console.log(this.state)
+  login = () =>{
+    this.props.login(this.state)
   }
   
   render() {
+    const {msg,redirectTo} = this.props.user;
+    if (redirectTo){
+      return <Redirect to={redirectTo}/>
+    }
     return (
       <div>
         <NavBar>用户登录</NavBar>
         <Logo/>
         <WingBlank>
           <List>
+            <div className='error-msg'>{msg}</div>
             <InputItem
               placeholder='输入用户名'
               onChange={val => this.handleChange('username', val)}
@@ -56,10 +63,15 @@ export default class Login extends Component {
             <WhiteSpace/>
             <Button type='primary' onClick={this.login}>登&nbsp;&nbsp;&nbsp;录</Button>
             <WhiteSpace/>
-            <Button onClick={this.toRegister}>还没有账号</Button>
+            <Button onClick={this.toRegister}>没有账号,去注册</Button>
           </List>
         </WingBlank>
       </div>
     )
   }
 }
+
+export default connect(
+  state =>({user : state.user}),
+  {login}
+)(Login)

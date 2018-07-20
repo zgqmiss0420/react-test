@@ -1,20 +1,32 @@
 import {combineReducers} from 'redux'
+import {AUTH_SUCCESS,ERROR_MSG,RESET_USER,RECEIVE_USER} from './action-types';
+import {getRedirectTo} from "../utils";
 
-function aaa(Prostate = 0 , action) {
-  switch (action.type){
-    default :
-      return Prostate
-  }
+const initUser = {
+  username : '',
+  type : '',
+  msg : '',
+  redirectTo: ''
 }
-
-function bbb(Prostate = {} , action) {
+function user(state=initUser ,action) {
   switch (action.type){
+    case AUTH_SUCCESS :
+      const user = action.data;
+      return {...user,redirectTo:getRedirectTo(user.type,user.header)}
+    case ERROR_MSG :
+      const msg = action.data;
+      return {...state,msg}
+    case RECEIVE_USER :
+      return action.data
+    case RESET_USER :
+      return {...initUser,msg}
     default :
-      return Prostate
+      return state;
   }
 }
 
 export default combineReducers({
-  aaa,
-  bbb
+  user
 })
+
+
